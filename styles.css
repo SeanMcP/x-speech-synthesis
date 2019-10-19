@@ -22,3 +22,7 @@ body {
     justify-content: center;
     width: var(--width);
 }
+
+body[data-read-aloud-mode-is-on='true'] > * *:hover {
+    box-shadow: 0 0 1rem #1059947a;
+}
