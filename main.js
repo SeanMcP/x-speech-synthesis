@@ -1,22 +1,5 @@
 const synth = window.speechSynthesis
-const readTrigger = document.getElementById('readTrigger')
 const readAloudButton = document.getElementById('read-aloud__button')
-
-const utterance = new SpeechSynthesisUtterance(
-    document.querySelector('section').textContent
-)
-
-readTrigger.addEventListener('click', () => {
-    if (readTrigger.dataset.isPlaying === 'true') {
-        synth.cancel()
-        readTrigger.dataset.isPlaying = false
-        readTrigger.textContent = 'Play'
-    } else {
-        synth.speak(utterance)
-        readTrigger.dataset.isPlaying = true
-        readTrigger.textContent = 'Stop'
-    }
-})
 
 function toggleReadAloudMode(e) {
     e.stopPropagation()
@@ -37,8 +20,8 @@ function clickListener(e) {
 
     const { textContent } = e.target
     if (textContent) {
-        window.speechSynthesis.cancel()
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance(textContent))
+        synth.cancel()
+        synth.speak(new SpeechSynthesisUtterance(textContent))
         document.body.dataset.readAloudIsOn = 'true'
     }
 }
